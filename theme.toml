@@ -1,0 +1,19 @@
+name = "m3-zola"
+description = "A theme for Zola inspired from Material Design v3."
+license = "GPLv3"
+homepage = "https://github.com/szorfein/m3-zola"
+# The minimum version of Zola required
+min_version = "0.11.0"
+# An optional live demo URL
+demo = ""
+
+[extra]
+
+[author]
+name = "Szorfein"
+homepage = "https://github.com/szorfein"
+
+[original]
+author =  "szorfein"
+homepage = "https://github.com/szorfein"
+repo = "https://github.com/szorfein/m3-zola"
