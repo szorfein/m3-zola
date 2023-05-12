@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block content %}
+{{ page.content | safe }}
+
+return to <a href="/blog" class="brand"><span>posts list</span></a>
+{% endblock content %}
+
