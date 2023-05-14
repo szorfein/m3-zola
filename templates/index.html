@@ -3,7 +3,46 @@
 {% block title %}Welcome to Zola{% endblock title %}
 
 {% block content %}
-<h1>Hello Zola!</h1>
+  <v-card>
+    <v-app>
+      <nav-component></nav-component>
+      <v-main>
 
-<a href="/blog">posts</a>
+      <h1>Hello Zola!</h1>
+
+      <a href="/blog">posts</a>
+
+      </v-main>
+    </v-app>
+  </v-card>
 {% endblock content %}
+
+{% block js %}
+  const { createApp } = Vue
+  const { createVuetify } = Vuetify
+
+  const vuetify = createVuetify()
+
+  const navComponent = {
+    template: `
+      <v-navigation-drawer class="pt-4" floating permanent>
+        <v-list density="compact" nav>
+          {% for item in config.extra.m3_menu %}
+          <v-list-item prepend-icon="{{ item.icon }}"
+                       title="{{ item.name }}"
+                       value="{{ item.name }}"
+                       href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">
+          </v-list-item>
+          {% endfor %}
+        </v-list>
+      </v-navigation-drawer>`
+  }
+
+  const app = createApp({
+    components: {
+      'nav-component': navComponent,
+    },
+  })
+
+  app.use(vuetify).mount('#app')
+{% endblock js %}

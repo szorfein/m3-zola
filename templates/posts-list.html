@@ -4,25 +4,20 @@
 {% block content %}
 <h1>{{ section.title }} </h1>
 
-<div id="app">
-    {% for page in section.pages %}
-    <v-card title="{{ page.title }}" text="...">
-        <v-card-actions>
-              <v-btn>Click me</v-btn>
-                </v-card-actions>
-    </v-card>
+{% for page in section.pages %}
+<v-card title="{{ page.title }}" text="...">
+  <v-card-actions>
+    <v-btn>Click me</v-btn>
+  </v-card-actions>
+</v-card>
+{% endfor %}
 
-    <v-card title="{{ page.title }}">
-      <v-card-actions>
-        <v-btn>Click Me</v-btn>
-      </v-card-actions>
-    </v-card>
-    {% endfor %}
-</div>
 <ul>
     {% for page in section.pages %}
 
       <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
         {% endfor %}
 </ul>
+{% set section = get_section(path="blog/_index.md", metadata_only=true) %}
+{{ section.pages }}
 {% endblock content %}

@@ -8,39 +8,22 @@
     <link href=" {{ get_url(path="css/vuetify.min.css") }}"
           rel=" stylesheet"
           type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+          rel="stylesheet">
   </head>
   <body>
-    <nav>
-     <ul>
-       {% for item in config.extra.m3_menu %}
-       <li>
-         <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">
-           {{ item.name }}
-         </a>
-       </li>
-       {% endfor %}
-     </ul>
-    </nav>
-
     <noscript>
-      Works better with JavaScript enable
+      Works best if JavaScript is enabled
     </noscript>
-    <!--
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    -->
+
+    <div id="app">
+      {% block content %}{% endblock content %}
+    </div>
+
     <script src="{{ get_url(path="js/vue.global.js") }}"></script>
     <script src="{{ get_url(path="js/vuetify.min.js") }}"></script>
-
-    {% block content %}{% endblock content %}
-
     <script>
-      const { createApp } = Vue
-      const { createVuetify } = Vuetify
-
-      const vuetify = createVuetify()
-
-      const app = createApp()
-      app.use(vuetify).mount('#app')
+      {% block js %}{% endblock js %}
     </script>
   </body>
 </html>
