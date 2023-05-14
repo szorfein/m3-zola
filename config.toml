@@ -13,4 +13,8 @@ build_search_index = false
 highlight_code = true
 
 [extra]
+m3_menu = [
+  { url = "$BASE_URL", name = "Home" },
+  { url = "$BASE_URL/blog", name = "Blog" },
+]
 # Put all your custom variables here

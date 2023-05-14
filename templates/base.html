@@ -5,8 +5,42 @@
     <meta charset="utf-8" />
     <meta name="viewport"
           content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href=" {{ get_url(path="css/vuetify.min.css") }}"
+          rel=" stylesheet"
+          type="text/css">
   </head>
   <body>
+    <nav>
+     <ul>
+       {% for item in config.extra.m3_menu %}
+       <li>
+         <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">
+           {{ item.name }}
+         </a>
+       </li>
+       {% endfor %}
+     </ul>
+    </nav>
+
+    <noscript>
+      Works better with JavaScript enable
+    </noscript>
+    <!--
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    -->
+    <script src="{{ get_url(path="js/vue.global.js") }}"></script>
+    <script src="{{ get_url(path="js/vuetify.min.js") }}"></script>
+
     {% block content %}{% endblock content %}
+
+    <script>
+      const { createApp } = Vue
+      const { createVuetify } = Vuetify
+
+      const vuetify = createVuetify()
+
+      const app = createApp()
+      app.use(vuetify).mount('#app')
+    </script>
   </body>
 </html>

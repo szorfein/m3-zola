@@ -3,8 +3,16 @@
 {% block title %}{{ page.title }}{% endblock title %}
 
 {% block content %}
-{{ page.content | safe }}
 
-return to <a href="/blog" class="brand"><span>posts list</span></a>
+<div>
+  <h4>On this page</h4>
+  <p>
+  {% for h1 in page.toc %}
+  <a href="{{ h1.permalink | safe}}">{{ h1.title }}</a>
+  {% endfor %}
+  </p>
+</div>
+
+{{ page.content | safe }}
 {% endblock content %}
 
