@@ -1,23 +1,39 @@
 {% extends "base.html" %}
+
 {% block title %}My Blog{% endblock title %}
 
 {% block content %}
-<h1>{{ section.title }} </h1>
+<v-app>
+  <v-main>
+    <h1>{{ section.title }} </h1>
 
-{% for page in section.pages %}
-<v-card title="{{ page.title }}" text="...">
-  <v-card-actions>
-    <v-btn>Click me</v-btn>
-  </v-card-actions>
-</v-card>
-{% endfor %}
+    <ul>
+      <li><router-link to="/blog/">index</router-link></li>
+      <li><router-link to="/blog/first-post">firstpost</router-link></li>
+    </ul>
 
-<ul>
+    <router-view></router-view>
+
     {% for page in section.pages %}
+    <post-list-component title="{{ page.title }}"
+                         content="{{ page.content | markdown }}"
+                         link="{{ page.permalink | safe }}">
+    </post-list-component>
+    {% endfor %}
 
-      <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
-        {% endfor %}
-</ul>
-{% set section = get_section(path="blog/_index.md", metadata_only=true) %}
-{{ section.pages }}
+  </v-main>
+</v-app>
+
 {% endblock content %}
+
+{% block js %}
+import App from "{{ get_url(path="js/post-route.js") }}"
+
+const { createApp } = Vue
+const { createVuetify } = Vuetify
+
+const vuetify = createVuetify()
+const app = createApp(App)
+
+app.use(vuetify).mount('#app')
+{% endblock js %}

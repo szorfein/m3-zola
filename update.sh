@@ -22,3 +22,6 @@ echo "Download vue.global.js"
 curl -o static/js/vue.global.js -sL https://unpkg.com/vue@3/dist/vue.global.prod.js
 echo "Download vuetify.min.js"
 curl -o static/js/vuetify.min.js "https://cdn.jsdelivr.net/npm/vuetify@$version/dist/vuetify.min.js"
+echo "Download mitt"
+curl -o static/js/mitt.umd.js "https://unpkg.com/mitt/dist/mitt.umd.js"
+

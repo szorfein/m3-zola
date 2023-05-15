@@ -16,3 +16,13 @@
 {{ page.content | safe }}
 {% endblock content %}
 
+{% block js %}
+import App from "{{ get_url(path="js/post-route.js") }}"
+const { createApp } = Vue
+const { createVuetify } = Vuetify
+
+const vuetify = createVuetify()
+const app = createApp(App)
+
+app.use(vuetify).mount('#app')
+{% endblock js %}

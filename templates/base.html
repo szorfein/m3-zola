@@ -22,7 +22,8 @@
 
     <script src="{{ get_url(path="js/vue.global.js") }}"></script>
     <script src="{{ get_url(path="js/vuetify.min.js") }}"></script>
-    <script>
+    <script src="{{ get_url(path="js/mitt.umd.js") }}"></script>
+    <script type="module">
       {% block js %}{% endblock js %}
     </script>
   </body>
